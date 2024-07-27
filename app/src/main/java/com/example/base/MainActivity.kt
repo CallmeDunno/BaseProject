@@ -25,7 +25,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             runDelay(5000) {
 //                val user = User(name = "John Doe", age = 30)
 //                userViewModel.insert(user)
-                binding.tv.setAnimation(binding.tv, R.anim.exit_to_right, true)
+//                binding.tv.setAnimation(binding.tv, R.anim.exit_to_right, true)
             }
 
         }
