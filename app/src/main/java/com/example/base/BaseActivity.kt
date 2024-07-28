@@ -73,6 +73,7 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity() {
     * */
     fun goTo(destination: Class<*>, singleValue: String? = null, bundle: Bundle? = null, canBack: Boolean = true) {
         val intent = Intent(this, destination)
+        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
         if (bundle != null) {
             intent.putExtra(Constant.INTENT_KEY, bundle)
         }
