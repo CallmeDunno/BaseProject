@@ -2,6 +2,7 @@ package com.example.base.extensions
 
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 
 internal fun Boolean?.isTrue(): Boolean = this == true
 
@@ -20,4 +21,10 @@ internal fun tryBlock(func: () -> Unit): Exception? {
 
 internal fun runDelay(long: Long, handle: () -> Unit) {
     Handler(Looper.getMainLooper()).postDelayed({ handle.invoke() }, long)
+}
+
+internal fun executionTime(func: () -> Unit) {
+    val start = getMilliseconds()
+    func.invoke()
+    Log.w("Dunno", "Execution Time: ${getMilliseconds() - start}")
 }

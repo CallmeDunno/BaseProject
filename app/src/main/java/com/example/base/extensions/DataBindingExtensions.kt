@@ -25,3 +25,13 @@ import com.example.base.R
 //        6->{imageView.setBackgroundResource(R.drawable.bg_theme_5)}
 //    }
 //}
+
+//internal fun shimmerDrawable(): ShimmerDrawable {
+//    val shimmer = Shimmer.AlphaHighlightBuilder().setDuration(800).setBaseAlpha(0.9f).setHighlightAlpha(1f).setDirection(Shimmer.Direction.LEFT_TO_RIGHT).setAutoStart(true).build()
+//
+//    val shimmerDrawable = ShimmerDrawable().apply {
+//        setShimmer(shimmer)
+//    }
+//
+//    return shimmerDrawable
+//}

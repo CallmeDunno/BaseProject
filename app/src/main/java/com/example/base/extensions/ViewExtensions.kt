@@ -5,6 +5,8 @@ import android.content.Context
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.view.inputmethod.InputMethodManager
+import android.widget.ImageView
+import androidx.core.content.ContextCompat
 import com.example.base.Constant
 
 internal fun View.hideKeyboard() {
@@ -63,3 +65,11 @@ internal fun View.setOnSingleClickListener(millis: Long = Constant.SINGLE_CLICK_
         }
     }
 }
+
+internal fun Context.color(color: Int) = ContextCompat.getColor(this, color)
+
+internal fun Context.drawable(drawable: Int) = ContextCompat.getDrawable(this, drawable)
+
+internal fun Context.string(string: Int) = getString(string)
+
+//internal fun Context.loadImage(path: Any, imageView: ImageView) = Glide.with(this).load(path).into(imageView)

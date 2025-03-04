@@ -33,3 +33,5 @@ internal fun formatTime(milliseconds: Long) : String {
     val dateFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
     return dateFormat.format(Date(milliseconds))
 }
+
+internal fun getMilliseconds() = System.currentTimeMillis()

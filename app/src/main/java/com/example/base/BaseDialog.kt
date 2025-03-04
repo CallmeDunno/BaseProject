@@ -13,10 +13,14 @@ import android.view.WindowManager
 import androidx.databinding.DataBindingUtil
 import androidx.viewbinding.ViewBinding
 
-abstract class BaseDialog<VB : ViewBinding>(private val context: Context, private val cancelTouchOutside: Boolean = false, private val gravity: Int = Gravity.CENTER, private val maxWidth: Boolean = false, private val maxHeight: Boolean = false) : Dialog(context) {
+abstract class BaseDialog<VB : ViewBinding>(private val context: Context) : Dialog(context) {
     protected lateinit var binding: VB
     abstract val layoutId: Int
     abstract val isCancel: Boolean
+    abstract val cancelTouchOutside: Boolean
+    abstract val gravity: Int
+    abstract val maxWidth: Boolean
+    abstract val maxHeight: Boolean
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +41,7 @@ abstract class BaseDialog<VB : ViewBinding>(private val context: Context, privat
         window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
+        window.setWindowAnimations(R.style.animationDialog)
         initView()
         initAction()
         this.setOnDismissListener {

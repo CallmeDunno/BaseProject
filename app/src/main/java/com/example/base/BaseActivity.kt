@@ -85,6 +85,16 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity() {
         if (!canBack) finish()
     }
 
+    fun receiveStringValue(key: String, block: (String) -> Unit, blockNull: () -> Unit) {
+        val data = intent.getStringExtra(key)
+        if (data != null) block.invoke(data) else blockNull.invoke()
+    }
+
+    fun receiveBundleValue(key: String, block: (Bundle) -> Unit, blockNull: () -> Unit) {
+        val bundle = intent.getBundleExtra(key)
+        if (bundle != null) block.invoke(bundle) else blockNull.invoke()
+    }
+
     fun notify(msg: String) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
     }
