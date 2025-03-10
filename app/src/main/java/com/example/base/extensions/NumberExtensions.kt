@@ -25,3 +25,8 @@ internal fun dpToPx(dp: Int, context: Context): Float {
     val density = context.resources.displayMetrics.density
     return (dp * density)
 }
+
+internal fun dipToPx(dpValue: Float): Float {
+    val scale: Float = Resources.getSystem().displayMetrics.density
+    return (dpValue * scale + 0.5f)
+}

@@ -2,10 +2,13 @@ package com.example.base.extensions
 
 import android.app.Activity
 import android.content.Context
+import android.graphics.LinearGradient
+import android.graphics.Shader
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.example.base.Constant
 
@@ -64,6 +67,16 @@ internal fun View.setOnSingleClickListener(millis: Long = Constant.SINGLE_CLICK_
             event.invoke()
         }
     }
+}
+
+internal fun TextView.gradientVertically(context: Context, startColor: Int, endColor: Int) {
+    this.paint.shader = LinearGradient(0f, 0f, 0f, this.lineHeight.toFloat(), intArrayOf(startColor, endColor), null, Shader.TileMode.CLAMP)
+    this.postInvalidate()
+}
+
+internal fun TextView.gradientHorizontally(startColor: Int, endColor: Int) {
+    this.paint.shader = LinearGradient(0f, 0f, this.paint.measureText(this.text.toString()), this.textSize, intArrayOf(startColor, endColor), null, Shader.TileMode.CLAMP)
+    this.postInvalidate()
 }
 
 internal fun Context.color(color: Int) = ContextCompat.getColor(this, color)
