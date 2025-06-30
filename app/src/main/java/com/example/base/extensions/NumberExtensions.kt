@@ -30,3 +30,15 @@ internal fun dipToPx(dpValue: Float): Float {
     val scale: Float = Resources.getSystem().displayMetrics.density
     return (dpValue * scale + 0.5f)
 }
+
+internal fun dp2px(context: Context, dpValue: Float): Int {
+    return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dpValue, context.resources.displayMetrics).toInt()
+}
+
+internal fun sp2px(context: Context, spValue: Float): Int {
+    return (spValue * context.resources.displayMetrics.scaledDensity + 0.5f).toInt()
+}
+
+internal fun px2sp(context: Context, pxValue: Float): Int {
+    return (pxValue / context.resources.displayMetrics.scaledDensity + 0.5f).toInt()
+}

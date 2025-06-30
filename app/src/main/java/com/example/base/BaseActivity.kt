@@ -23,6 +23,10 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity() {
         setLanguage()
         binding = DataBindingUtil.setContentView(this, layoutID)
         TAG = "${this.localClassName} ===>"
+        if (!isActivityAvailable()) {
+            finish()
+            return
+        }
         setContentView(binding.root)
         initView()
         onObserver()
@@ -38,6 +42,10 @@ abstract class BaseActivity<VB : ViewDataBinding> : AppCompatActivity() {
     override fun onBackPressed() {
         super.onBackPressed()
         this.overridePendingTransition(R.anim.enter_from_left, R.anim.exit_to_right)
+    }
+
+    open fun isActivityAvailable(): Boolean {
+        return true
     }
 
     open fun setLanguage() {}

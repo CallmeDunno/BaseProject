@@ -19,6 +19,11 @@ internal fun tryBlock(func: () -> Unit): Exception? {
     }
 }
 
+internal fun <T> T?.ifNotNull(blockNotNull: (T) -> Unit = {}, blockNull: () -> Unit = {}) {
+    if (null != this) blockNotNull(this)
+    else blockNull()
+}
+
 internal fun runDelay(long: Long, handle: () -> Unit) {
     Handler(Looper.getMainLooper()).postDelayed({ handle.invoke() }, long)
 }
